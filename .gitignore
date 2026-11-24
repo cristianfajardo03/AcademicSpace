@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Node.js
+node_modules/
+dist/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
