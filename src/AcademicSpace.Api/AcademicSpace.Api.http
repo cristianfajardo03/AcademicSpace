@@ -1,0 +1,31 @@
+@host = http://localhost:5199
+
+### Iniciar sesión
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "correo": "admin@academicspace.edu",
+  "contrasena": "Admin12345!"
+}
+
+### Perfil del usuario autenticado
+GET {{host}}/api/users/me
+Authorization: Bearer {{login.response.body.token}}
+
+### Listar espacios
+GET {{host}}/api/spaces
+Authorization: Bearer {{login.response.body.token}}
+
+### Consultar disponibilidad
+GET {{host}}/api/availability/spaces?fecha=2026-12-01&horaInicio=08:00&horaFin=10:00
+Authorization: Bearer {{login.response.body.token}}
+
+### Listar solicitudes
+GET {{host}}/api/reservations
+Authorization: Bearer {{login.response.body.token}}
+
+### Cerrar sesión
+POST {{host}}/api/auth/logout
+Authorization: Bearer {{login.response.body.token}}
